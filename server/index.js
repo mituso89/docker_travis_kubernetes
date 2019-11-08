@@ -8,7 +8,7 @@ const redis = require('redis')
 const cors = require('cors')
 
 const app = express()
-app.use(cors)
+//app.use(cors)
 
 app.use(bodyParse.json())
 
