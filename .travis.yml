@@ -6,7 +6,7 @@ before_install:
   - docker build -t stephengrider/react-app -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run stephengrider/react-app npm test -- --coverage
+  - docker run -e CI=true stephengrider/react-app npm test -- --coverage
 after_success:
   - docker build -t stephengrider/multi-client ./client
   - docker build -t stephengrider/multi-server ./server
