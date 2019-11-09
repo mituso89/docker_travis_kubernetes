@@ -12,7 +12,7 @@ after_success:
   - docker build -t stephengrider/multi-server ./server
   - docker build -t stephengrider/multi-nginx ./nginx
   - docker build -t stephengrider/multi-worker ./worker
-  - echo "$DOCKER_PASS" | docker login -u "DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push stephengrider/multi-client
   - docker push stephengrider/multi-server
   - docker push stephengrider/multi-nginx
