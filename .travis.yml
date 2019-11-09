@@ -13,6 +13,7 @@ after_success:
   - docker build -t mituso/multi-nginx ./nginx
   - docker build -t mituso/multi-worker ./worker
   - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  
   - docker push mituso/multi-client
   - docker push mituso/multi-server
   - docker push mituso/multi-nginx
