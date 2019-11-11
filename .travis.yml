@@ -19,15 +19,14 @@ after_success:
   - docker push mituso/multi-nginx
   - docker push mituso/multi-worker
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-east-2"
-#   app: "docker"
-#   env: "Docker-env"
-#   bucket_name: "elasticbeanstalk-us-east-2-190683250872"
-#   bucket_path: "docker"
-#   on: 
-#     branch: master
-#     access_key_id: $AWS_ACCESS_KEY
-#     secret_access_key:
-#       secuse: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker"
+  env: "multi-docker"
+  bucket_name: "elasticbeanstalk-us-east-2-190683250872"
+  bucket_path: "docker"
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
