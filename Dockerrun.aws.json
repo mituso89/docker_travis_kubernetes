@@ -19,7 +19,7 @@
             "name": "worker",
             "image": "mituso/multi-worker",
             "host": "worker",
-            "essential": true,
+            "essential": false,
             "memory": 128
         },
         {
