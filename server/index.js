@@ -33,6 +33,8 @@ const redisClient = redis.createClient({
     retry_strategy: () => 1000
 })
 
+
+
 const redisPulisher = redisClient.duplicate()
 
 
