@@ -9,15 +9,15 @@ script:
   - docker run -e CI=true mituso/react-app npm test
 after_success:
   - docker build -t mituso/multi-client ./client
-  - docker build -t mituso/multi-server ./server
+  #- docker build -t mituso/multi-server ./server
   - docker build -t mituso/multi-nginx ./nginx
-  - docker build -t mituso/multi-worker ./worker
+  #- docker build -t mituso/multi-worker ./worker
   - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USERNAME" --password-stdin
   
   - docker push mituso/multi-client
-  - docker push mituso/multi-server
+  # - docker push mituso/multi-server
   - docker push mituso/multi-nginx
-  - docker push mituso/multi-worker
+  #- docker push mituso/multi-worker
 
 deploy:
   edge: true
