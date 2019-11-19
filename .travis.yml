@@ -20,12 +20,13 @@ after_success:
   - docker push mituso/multi-worker
 
 deploy:
+  edge: true
   provider: elasticbeanstalk
-  region: "us-east-2"
-  app: "docker"
-  env: "multi-docker"
-  bucket_name: "elasticbeanstalk-us-east-2-190683250872"
-  bucket_path: "docker-multi"
+  region: us-east-2
+  app: docker
+  env: multi-docker
+  bucket_name: elasticbeanstalk-us-east-2-190683250872
+  bucket_path: docker-multi
   on: 
     branch: master
   access_key_id: $AWS_ACCESS_KEY
