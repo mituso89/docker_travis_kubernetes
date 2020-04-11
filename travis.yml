@@ -1,0 +1,29 @@
+sudo: required
+service: 
+  - docker
+
+env:
+  global:
+    - SHA=$(git rev-parse HEAD)
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components updare kubectl
+  - gcloud auth activate-service-account --key-file service-account.json
+  - gcloud config set project theta-lambda-273720
+  - gcloud config set compute/zone us-central1-a	
+  - gcloud container clusters get-credentials mutile-cluster
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t mituso/react-app -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true mituso/react-app npm test
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
