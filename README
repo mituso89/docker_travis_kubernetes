@@ -1,2 +1,14 @@
-BUILD K8S 
+CI CD with Travis and Google Cloud
 
+
+To start by minikube:
+
+git clone https://github.com/mituso89/docker_travis_kubernetes.git
+cd docker_travis_kubernetes
+kubectl apply -f k8s
+
+Run http://minikubeip/
+with client:
+for exs: http://192.168.99.100
+with Api:
+http://192.168.99.100/api
