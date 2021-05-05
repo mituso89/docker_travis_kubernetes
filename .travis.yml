@@ -1,5 +1,5 @@
 sudo: required
-services: 
+services:
   - docker
 
 env:
@@ -14,7 +14,7 @@ before_install:
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project theta-lambda-273720
-  - gcloud config set compute/zone us-central1-a	
+  - gcloud config set compute/zone us-central1-a
   - gcloud container clusters get-credentials mutile-cluster
   - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t mituso/react-app -f ./client/Dockerfile.dev ./client
